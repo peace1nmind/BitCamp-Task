@@ -28,34 +28,66 @@ public class CellPhone {
 	
 	
 	// Method
-	public void call(int time) throws IllegalArgumentException {
+	public void call(int time) {
 		
-		if (time < 0) {
-			throw new IllegalArgumentException("통화시간 입력오류");
-		} else {
-			System.out.println("통화시간 : "+time);
-			
-			battery -= time*0.5;
-			
-			if (battery <= 0) {
-				battery = 0;
+		try {
+			if (time < 0) {
+				throw new IllegalArgumentException("통화시간 입력오류");
+			} else {
+				System.out.println("통화시간 : "+time);
+				
+				battery -= time*0.5;
+				
+				if (battery <= 0) {
+					battery = 0;
+				}
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+		
+//		if (time < 0) {
+//			throw new IllegalArgumentException("통화시간 입력오류");
+//		} else {
+//			System.out.println("통화시간 : "+time);
+//			
+//			battery -= time*0.5;
+//			
+//			if (battery <= 0) {
+//				battery = 0;
+//			}
+//		}
 	}
 	
-	public void charge(int time) throws IllegalArgumentException {
+	public void charge(int time) {
 		
-		if (time < 0) {
-			throw new IllegalArgumentException("충전시간 입력오류");
-		} else {
-			System.out.println("충전시간 : "+time);
-			
-			battery += time*3;
-			
-			if (battery >= 100) {
-				battery = 100;
+		try {
+			if (time < 0) {
+				throw new IllegalArgumentException("충전시간 입력오류");
+			} else {
+				System.out.println("충전시간 : "+time);
+				
+				battery += time*3;
+				
+				if (battery >= 100) {
+					battery = 100;
+				}
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+		
+//		if (time < 0) {
+//			throw new IllegalArgumentException("충전시간 입력오류");
+//		} else {
+//			System.out.println("충전시간 : "+time);
+//			
+//			battery += time*3;
+//			
+//			if (battery >= 100) {
+//				battery = 100;
+//			}
+//		}
 	}
 	
 	public void printBattery() {
