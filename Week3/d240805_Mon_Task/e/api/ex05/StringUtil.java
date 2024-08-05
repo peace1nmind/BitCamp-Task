@@ -11,7 +11,7 @@ public class StringUtil {
 	}
 	
 	// Method
-	public static String replaceString(String[] arr) {
+	private static String replaceString(String[] arr) {
 		
 		int maxIndex = 0;
 		int maxCount = 0;
@@ -28,7 +28,7 @@ public class StringUtil {
 					charCount++;
 				}
 				
-				if (charCount>maxCount) {
+				if (charCount>=maxCount) {
 					maxCount = charCount;
 					maxIndex = i;
 				}
@@ -45,7 +45,7 @@ public class StringUtil {
 		
 	}
 	
-	public static String replaceString(String[] arr, String target) {
+	private static String replaceString(String[] arr, String target) {
 		
 		int maxIndex = 0;
 		int maxCount = 0;
