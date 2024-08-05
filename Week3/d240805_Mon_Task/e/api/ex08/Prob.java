@@ -64,16 +64,19 @@ public class Prob {
 				return splitedString;
 				
 			case 4:
+				// subString 활용
 				int start =0;
 				int end = str.indexOf(splitter);
 				int splitterCnt = 1;
 				
+				System.out.println("end="+end);
+				
 				for (int i = 0; i < str.length(); i++) {
-					if ((str.charAt(i)+"")==splitter) {
+					if ((str.charAt(i)+"").equals(splitter)) {
 						splitterCnt++;
 					}
 				}
-				
+//				System.out.println("splitterCnt="+splitterCnt);
 				splitedString = new String[splitterCnt];
 				
 				for (int i = 0; i < splitterCnt; i++) {
@@ -81,10 +84,16 @@ public class Prob {
 					splitedString[i] = s;
 					start = end+1;
 					end = str.indexOf(splitter, start);
-					System.out.println("end="+end);
+					
+					if (end==-1) {
+						end = str.length()-1;
+					}else {
+//						end = str.indexOf(splitter, start);
+					}
+//					System.out.println("end="+end);
 				}
 				
-				return null;
+				return splitedString;
 				
 			default:
 				System.out.println("1~3의 정수를 입력해주세요.");
@@ -99,7 +108,7 @@ public class Prob {
 	public static void main(String[] args) {
 		
 		String str = "PROD-001#X-note#Samsung#3#6000000";
-		String a = "	0		1		2	  3		4";
+		String a = "  012345678901234567890123456789012";
 		
 		System.out.println("=== 문자열 처리 결과 1 ===");
 		String[] strs = stringSplit(str, "#", 1);
