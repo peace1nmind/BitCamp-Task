@@ -1,5 +1,7 @@
 package d240805_Mon_Task.e.api.ex04;
 
+import java.util.List;
+import java.util.Stack;
 import java.util.Vector;
 
 // W2 D11 Task2
@@ -13,14 +15,14 @@ public class ArrayCopy {
 	}
 
 	// Method
-	public Vector<String> moveToVector(String[] datas) {
-		Vector<String> dataV = new Vector<String>();
+	public List<String> moveToVector(String[] datas) {
+		Stack<String> dataL = new Stack<String>();
 
 		for (String data: datas) {
-			dataV.add(0,data);
+			dataL.add(0, data);
 		}
 		
-		return dataV;
+		return dataL;
 	}
 
 }

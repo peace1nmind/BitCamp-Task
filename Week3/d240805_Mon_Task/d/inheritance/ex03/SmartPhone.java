@@ -24,13 +24,12 @@ public class SmartPhone extends CellPhone {
 
 	// Method
 	@Override
-	public int calculateTotalFee() {
+	public void calculateTotalFee() {
 		if (isMonthlyFixedRate) {
 			setTotalFee(getTotalFee()+monthlyFixedFee);
 			
-			return getTotalFee();
 		} else {
-			return super.calculateTotalFee();
+			super.calculateTotalFee();
 		}
 	}
 	

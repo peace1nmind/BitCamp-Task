@@ -34,9 +34,8 @@ public class CellPhone {
 		System.out.println(phoneNumber+" 번호로 "+callTime+" 통화함");
 	}
 	
-	public int calculateTotalFee() {
+	public void calculateTotalFee() {
 		totalFee = totalCallTime*feePerCallTime;
-		return totalFee;
 	}
 	
 	public void printAll(CellPhone cellPhone) {
