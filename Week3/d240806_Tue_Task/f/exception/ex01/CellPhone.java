@@ -30,20 +30,17 @@ public class CellPhone {
 	// Method
 	public void call(int time) throws IllegalArgumentException {
 		
-		
-			if (time < 0) {
-				throw new IllegalArgumentException("통화시간 입력오류");
-			} else {
-				System.out.println("통화시간 : "+time);
-				
-				battery -= time*0.5;
-				
-				if (battery <= 0) {
-					battery = 0;
-				}
+		if (time < 0) {
+			throw new IllegalArgumentException("통화시간 입력오류");
+		} else {
+			System.out.println("통화시간 : "+time);
+			
+			battery -= time*0.5;
+			
+			if (battery <= 0) {
+				battery = 0;
 			}
-
-		
+		}
 	}
 	
 	public void charge(int time) throws IllegalArgumentException {
