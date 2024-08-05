@@ -34,14 +34,18 @@ public class FileController {
 			String source=null;
 			
 			while ((source=br.readLine())!=null) {
-				System.out.println("readLine()= "+source);
+//				System.out.println("readLine()= "+source);
 				strList.add(0, source);
 			}
 			
-			for (String str: strList) {
-				System.out.println("str= "+str);
-				bw.write(str);
-				bw.newLine();
+			for (int i=0; i<strList.size(); i++) {
+//				System.out.println("str= "+);
+				if (i<strList.size()-1) {
+					bw.write(strList.get(i));
+					bw.newLine();
+				}else {
+					bw.write(strList.get(i));
+				}
 			}
 			
 			bw.flush();
