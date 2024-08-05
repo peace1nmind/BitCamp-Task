@@ -65,6 +65,7 @@ public class CellPhone {
 	@Override
 	public boolean equals(Object otherObject) {
 		if (otherObject instanceof CellPhone) {
+//			System.out.println("CellPone 타입입니다");
 			return (((CellPhone) otherObject).getModel() == model);
 		}else {
 			return false;
