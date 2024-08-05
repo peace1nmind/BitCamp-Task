@@ -20,7 +20,11 @@ public class CellPhoneMain {
 		myPhone.call(40);
 		myPhone.printBattery();
 		
-		myPhone.call(-20);
+		try {
+			myPhone.call(-20);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		CellPhone yourPhone = new CellPhone("SCH-600");
 		
