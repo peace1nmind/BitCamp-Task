@@ -1,5 +1,6 @@
 package d240805_Mon_Task.e.api.ex08;
 // W2 D11 Task4
+/* 수정중 */
 
 import java.util.Vector;
 
@@ -62,6 +63,29 @@ public class Prob {
 				
 				return splitedString;
 				
+			case 4:
+				int start =0;
+				int end = str.indexOf(splitter);
+				int splitterCnt = 1;
+				
+				for (int i = 0; i < str.length(); i++) {
+					if ((str.charAt(i)+"")==splitter) {
+						splitterCnt++;
+					}
+				}
+				
+				splitedString = new String[splitterCnt];
+				
+				for (int i = 0; i < splitterCnt; i++) {
+					s = str.substring(start, end);
+					splitedString[i] = s;
+					start = end+1;
+					end = str.indexOf(splitter, start);
+					System.out.println("end="+end);
+				}
+				
+				return null;
+				
 			default:
 				System.out.println("1~3의 정수를 입력해주세요.");
 				
@@ -93,6 +117,13 @@ public class Prob {
 		
 		System.out.println("=== 문자열 처리 결과 3 ===");
 		strs = stringSplit(str, "#", 3);
+		for (String s: strs) {
+			System.out.println(s);
+		}
+		System.out.println("========= end =========\n");
+		
+		System.out.println("=== 문자열 처리 결과 4 ===");
+		strs = stringSplit(str, "#", 4);
 		for (String s: strs) {
 			System.out.println(s);
 		}
