@@ -40,11 +40,10 @@ public class FileController {
 			
 			for (int i=0; i<strList.size(); i++) {
 //				System.out.println("str= "+);
-				if (i<strList.size()-1) {
-					bw.write(strList.get(i));
+				bw.write(strList.get(i));
+				
+				if (i!=strList.size()-1) {
 					bw.newLine();
-				}else {
-					bw.write(strList.get(i));
 				}
 			}
 			
