@@ -20,7 +20,7 @@ public class FileCompareUtil {
 	}
 
 	// Method
-	public ArrayList compareFile(String fstFileName, String scdFileName) throws Exception {
+	public List<String> compareFile(String fstFileName, String scdFileName) throws Exception {
 		
 		
 		BufferedReader br1;
@@ -29,7 +29,7 @@ public class FileCompareUtil {
 		String source1 = null;
 		String source2 = null;
 		int line = 1;
-		ArrayList<String> strList = new ArrayList<String>();
+		List<String> strList = new ArrayList<String>();
 		
 		try {
 			br1 = new BufferedReader(new FileReader(fstFileName));

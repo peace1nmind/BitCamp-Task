@@ -1,15 +1,15 @@
 package d240806_Tue_Task.f.exception.ex01;
 // W3 D12 Task1
 
-class IllegalArgumentException extends Exception {
-
-	public IllegalArgumentException(String message) {
-		super(message);
-		System.out.println(message);
-		System.out.println(new CellPhone().getBattery());
-	}
-	
-}
+//class IllegalArgumentException extends Exception {
+//
+//	public IllegalArgumentException(String message) {
+//		super(message);
+//		System.out.println(message);
+//		System.out.println(new CellPhone().getBattery());
+//	}
+//	
+//}
 
 public class CellPhone {
 
@@ -96,9 +96,11 @@ public class CellPhone {
 	
 	@Override
 	public boolean equals(Object otherObject) {
-		if (otherObject instanceof CellPhone) {
+		if (otherObject == null) {
+			return false;
+		}else if (otherObject instanceof CellPhone) {
 //			System.out.println("CellPone 타입입니다");
-			return (((CellPhone) otherObject).getModel() == model);
+			return (((CellPhone) otherObject).getModel().equals(model));
 		}else {
 			return false;
 		}

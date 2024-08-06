@@ -71,6 +71,7 @@ public class FileController {
 	public static void main(String[] args) {
 		
 		FileController c = new FileController();
+		String path = "./Week3/d240806_Tue_Task/";
 		String oldf = "files/oldf.txt";
 		String newf = "files/newf.txt";
 		c.reverseLine(oldf, newf);
