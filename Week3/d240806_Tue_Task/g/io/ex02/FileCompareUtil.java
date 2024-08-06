@@ -22,10 +22,9 @@ public class FileCompareUtil {
 	// Method
 	public List<String> compareFile(String fstFileName, String scdFileName) throws Exception {
 		
-		
 		BufferedReader br1;
 		BufferedReader br2;
-		BufferedWriter bw;
+		
 		String source1 = null;
 		String source2 = null;
 		int line = 1;
