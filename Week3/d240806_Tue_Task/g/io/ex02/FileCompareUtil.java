@@ -51,7 +51,8 @@ public class FileCompareUtil {
 	public static void main(String[] args) throws Exception {
 		
 		FileCompareUtil util = new FileCompareUtil();
-		System.out.println(util.compareFile("./files/fstFile1.txt", "./files/scdFile1.txt"));
+		String path = "./Week3/d240806_Tue_Task/";
+		System.out.println(util.compareFile(path+"files/fstFile1.txt", path+"files/scdFile1.txt"));
 		System.out.println("Successfull!!");
 		
 	}// main end
