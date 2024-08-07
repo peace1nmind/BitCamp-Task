@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Vector;
 
 // W3 D13 Task1 
-// 글자 반대로 반환
+// 글자반대로 반환
 
 public class Prob {
 
