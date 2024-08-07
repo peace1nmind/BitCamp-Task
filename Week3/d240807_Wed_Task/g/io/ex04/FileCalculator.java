@@ -24,18 +24,26 @@ public class FileCalculator {
 		String source = "";
 		int sum = 0;
 		int mul = 1;
+		boolean isLn = false;
 		
 		while ((source=br.readLine())!=null) {
 			sum += Integer.parseInt(source);
 			mul *= Integer.parseInt(source);
+			isLn = source.length()==0;
 		}
 		
 		br.close();
 		
 		PrintWriter pw = new PrintWriter(new FileWriter(inputFileName, true));
-//		pw.println();
-		pw.println(sum);
-		pw.println(mul);
+		
+		if (isLn) {
+			pw.println(sum);
+			pw.println(mul);
+		} else {
+			pw.println();
+			pw.println(sum);
+			pw.println(mul);
+		}
 		
 		pw.flush();
 		pw.close();
