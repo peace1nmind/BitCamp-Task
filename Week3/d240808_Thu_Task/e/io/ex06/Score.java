@@ -1,7 +1,4 @@
 package d240808_Thu_Task.e.io.ex06;
-
-import java.util.Vector;
-
 // W3 D14 Task3-1
 
 public class Score {
