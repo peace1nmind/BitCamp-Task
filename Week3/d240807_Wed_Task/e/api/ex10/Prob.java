@@ -20,9 +20,9 @@ public class Prob {
 	public List<String> dataChange(String[] strData) {
 		
 		List<String> strList = new Vector<String>();
-		StringBuffer sb = new StringBuffer();
 		
 		for (String str: strData) {
+			StringBuffer sb = new StringBuffer(str);
 			strList.add(0, sb.reverse().toString());
 			sb = new StringBuffer();
 		}
