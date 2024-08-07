@@ -23,11 +23,7 @@ public class Prob {
 		StringBuffer sb = new StringBuffer();
 		
 		for (String str: strData) {
-			
-			for (int i = 0; i < str.length(); i++) {
-				 sb = sb.insert(0, str.charAt(i));
-			}
-			strList.add(0, sb.toString());
+			strList.add(0, sb.reverse().toString());
 			sb = new StringBuffer();
 		}
 		
