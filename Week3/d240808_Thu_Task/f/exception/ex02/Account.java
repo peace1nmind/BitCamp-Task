@@ -8,10 +8,12 @@ public class Account {
 	private boolean creditLine = false;
 	private int creditLineLimit = 0;
 	int balance = 0;
+	int num = 0;
 	
 	
 	// Constructor
 	public Account() {
+		this.accountNo = null;
 	}
 	
 	public Account(String accountNo, boolean creditLine, int creditLineLimit, int balance) {
@@ -25,10 +27,16 @@ public class Account {
 	// Method
 	public void deposit(int money) {	// 입금
 		balance += money;
+		num++;
 	}
 	
-	public void withdraw(int money) {	// 출금
+	public void withdraw(int money) throws Exception {	// 출금
 		balance -= money;
+		
+		if ((creditLine && (balance<-creditLineLimit)) || (!creditLine && (balance<0))) {
+			throw new Exception("잔고부족 출금불가 합니다.");
+		}
+		num++;
 	}
 	
 	@Override
@@ -37,10 +45,32 @@ public class Account {
 		String result = "계좌번호 : "+accountNo+",\t잔고 : "+balance;
 		
 		if (creditLine) {
-			result += "\t[[ "+creditLineLimit*(-1)+"원 마이너스통장 ]]";
+			result += "\t[[ -"+creditLineLimit+"원 마이너스통장 ]]";
 		}
 		
 		return result;
+	}
+	
+	public void printStatus(Account account) {
+		System.out.println(num+". 최초 계좌 상태");
+		System.out.println("[계좌정보] "+account);
+		num++;
+	}
+	
+	public void printStatus(Account account, int money, boolean isDeposit) throws Exception {
+		
+		String inOrOut = (isDeposit) ? "입금" : "출금";
+		
+		System.out.println(String.format("\n%d. %s 계좌 %d %s요청", num, account.getAccountNo(), money, inOrOut));
+		
+		if (isDeposit) {
+			account.deposit(money);
+		}else {
+			account.withdraw(money);
+		}
+		
+		System.out.println("[계좌정보] "+account);
+		num++;
 	}
 	
 	

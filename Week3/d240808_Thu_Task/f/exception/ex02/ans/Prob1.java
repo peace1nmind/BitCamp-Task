@@ -45,23 +45,35 @@ public class Prob1 {
 		
 		Account account02 = new Account();
 		
+//		try {
+//			account02.setAccountNo("222-222-222");
+//			
+//			System.out.println("0.최초 계좌 상태");
+//			System.out.println("[계좌정보] "+account02);
+//			
+//			System.out.println("\n1. "+account02.getAccountNo()+"계좌 100000 입금요청");
+//			account02.deposit(100000);
+//			System.out.println("[계좌정보] "+account02);
+//			
+//			System.out.println("\n2. "+account02.getAccountNo()+"계좌 50000 출금요청");
+//			account02.withdraw(50000);
+//			System.out.println("[계좌정보] "+account02);
+//			
+//			System.out.println("\n3. "+account02.getAccountNo()+"계좌 60000 출금요청");
+//			account02.withdraw(60000);
+//			System.out.println("[계좌정보] "+account02);
+//			
+//		} catch (Exception e) {
+//			System.out.println(">>> 예외발생 : "+account02.getAccountNo()+" : "+e.getMessage());
+//		}
+		
 		try {
 			account02.setAccountNo("222-222-222");
 			
-			System.out.println("0.최초 계좌 상태");
-			System.out.println("[계좌정보] "+account02);
-			
-			System.out.println("\n1. "+account02.getAccountNo()+"계좌 100000 입금요청");
-			account02.deposit(100000);
-			System.out.println("[계좌정보] "+account02);
-			
-			System.out.println("\n2. "+account02.getAccountNo()+"계좌 50000 출금요청");
-			account02.withdraw(50000);
-			System.out.println("[계좌정보] "+account02);
-			
-			System.out.println("\n3. "+account02.getAccountNo()+"계좌 60000 출금요청");
-			account02.withdraw(60000);
-			System.out.println("[계좌정보] "+account02);
+			account02.printStatus(account02);
+			account02.printStatus(account02, 100000, true);
+			account02.printStatus(account02, 50000, false);
+			account02.printStatus(account02, 60000, false);
 			
 		} catch (Exception e) {
 			System.out.println(">>> 예외발생 : "+account02.getAccountNo()+" : "+e.getMessage());
