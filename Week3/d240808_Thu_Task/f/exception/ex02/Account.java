@@ -42,11 +42,8 @@ public class Account {
 	@Override
 	public String toString() {
 		
-		String result = "계좌번호 : "+accountNo+",\t잔고 : "+balance;
-		
-		if (creditLine) {
-			result += "\t[[ -"+creditLineLimit+"원 마이너스통장 ]]";
-		}
+		String result = "계좌번호 : "+accountNo+",\t잔고 : "+balance
+				+ ((creditLine) ? "\t[[ -"+creditLineLimit+"원 마이너스통장 ]]" : "");
 		
 		return result;
 	}

@@ -41,14 +41,20 @@ public class Grade {
 		}catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 			new FileNotFoundException(String.format("\"%d\"을 찾지 못했습니다.", fileName));
+			
 		} catch (NumberFormatException e2) {
 			e2.printStackTrace();
+			
 			new NumberFormatException(line.split(",")[1]+"은 숫자 형태가 아닙니다.");
 		} catch (IOException e3) {
 			e3.printStackTrace();
+			
 		}finally {
 			try {
-				br.close();
+				if (br != null) {
+					br.close();
+				}
+				
 			} catch (Exception e4) {
 				e4.printStackTrace();
 			}

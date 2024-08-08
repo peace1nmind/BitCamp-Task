@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Vector;
 
 // W3 D14 Task3-2
@@ -21,7 +22,7 @@ public class Prob {
 				+score.getMath()+" "+score.getSum());
 	}
 	
-	public Vector<Score> getScore(String fileName) {
+	public List<Score> getScore(String fileName) {
 		
 		Vector<Score> scores = new Vector<Score>();
 		BufferedReader br = null;
@@ -75,7 +76,7 @@ public class Prob {
 	public static void main(String[] args) throws Exception {
 		
 		String path = "./Week3/d240808_Thu_Task/e/io/ex06/";
-		Vector<Score> scores = new Prob().getScore(path+"data.txt");
+		Vector<Score> scores = (Vector<Score>) new Prob().getScore(path+"data.txt");
 		
 		for (Score score: scores) {
 			score.printScore();
