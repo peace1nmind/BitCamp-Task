@@ -1,0 +1,96 @@
+문제 1 ]
+
+SELECT
+emp.employee_id 사번, emp.department_id 부서번호, 
+emp.salary 연봉, salary_info.avg 부서평균연봉 
+FROM employees emp,
+		(SELECT department_id dept_id, ROUND(AVG(NVL(salary, 0)), 0) avg
+		FROM employees
+		GROUP BY department_id) salary_info
+WHERE emp.department_id = salary_info.dept_id
+		AND emp.salary > salary_info.avg
+ORDER BY salary_info.avg DESC
+;
+
+
+문제 2 ]
+
+SELECT *
+FROM 
+(SELECT
+RANK() OVER (ORDER BY salary DESC) rankking, last_name, first_name, salary
+FROM employees) rank
+WHERE rank.rankking BETWEEN 6 AND 10
+;
+
+
+문제 3 ]
+
+SELECT
+TO_CHAR(e.hire_date, 'YYYY') 년도, TO_CHAR(AVG(NVL(e.salary, 0)), '999,999') 평균급여
+FROM employees e, jobs j
+WHERE e.job_id = j.job_id
+	AND j.job_title = ('Sales Manager')
+GROUP BY TO_CHAR(e.hire_date, 'YYYY')
+ORDER BY 평균급여 DESC
+;
+
+
+문제 4 ]
+
+SELECT
+e.last_name 사원이름, mng.last_name 매니저이름, j.job_title 부서이름
+FROM
+employees e, employees mng, jobs j, 
+(SELECT d.department_id dept_id, l.city
+	FROM departments d, locations l
+	WHERE d.location_id = l.location_id) dl
+WHERE e.manager_id = mng.employee_id(+)
+AND e.job_id = j.job_id
+AND e.department_id = dl.dept_id
+AND dl.city = 'Seattle'
+ORDER BY e.last_name
+;
+
+
+문제 5 ]
+
+SELECT 
+e.last_name 이름, d.department_name 부서이름, e.salary 급여
+FROM employees e, departments d,
+	(SELECT
+		department_id, MIN(NVL(salary, 0)) min
+		FROM employees
+		GROUP BY department_id) ds
+WHERE e.department_id = d.department_id
+AND (e.department_id = ds.department_id AND e.salary = ds.min)
+ORDER BY 부서이름, 이름
+;
+
+
+문제 6 ]
+
+SELECT
+l.city, AVG(NVL(e.salary, 0)) avg, COUNT(e.employee_id)
+FROM locations l, employees e, departments d
+WHERE (e.department_id = d.department_id AND d.location_id = l.location_id)
+GROUP BY l.city
+HAVING COUNT(e.employee_id) < 10
+ORDER BY avg
+;
+
+
+문제 7 ]
+
+SELECT
+j.job_title, AVG(NVL(e.salary, 0))
+FROM employees e, jobs j
+WHERE e.job_id = j.job_id
+AND e.department_id = 30
+GROUP BY j.job_title
+HAVING AVG(NVL(e.salary, 0)) >= 2000
+;
+
+
+문제 8 ]
+
