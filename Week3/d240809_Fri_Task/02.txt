@@ -21,13 +21,13 @@ AND d.department_name IN ('Marketing')
 
 ¹®Á¦ 3 ]
 
-** {parma1} = int maxSalary
+** ? = int maxSalary
 
 SELECT
 j.job_title job_title, AVG(NVL(e.salary, 0)) avgSalary
 FROM employees e, jobs j
 WHERE e.job_id = j.job_id
-AND salary >= {param1}
+AND salary >= ?
 GROUP BY j.job_title
 ORDER BY avgSalary DESC
 ;
