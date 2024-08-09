@@ -1,0 +1,30 @@
+문제 1 ]
+
+SELECT
+e.last_name, e.salary
+FROM employees e, employees mng
+WHERE e.manager_id = mng.employee_id
+AND e.salary > mng.salary
+;
+
+
+문제 3 ]
+
+SELECT
+employee_id 사번, first_name 이름, salary 연봉
+FROM employees
+WHERE LOWER(first_name) Like ?
+AND salary >= ?
+
+** ? = String %name%, int salary
+
+
+문제 4 ]
+
+SELECT
+e.first_name 이름, e.last_name 성, e.salary 연봉
+FROM employees e, jobs j
+WHERE e.job_id = j.job_id
+AND (j.job_title = 'Sales Representative' AND salary BETWEEN 9000 AND 10000)
+;
+

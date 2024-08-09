@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// W D 
+// W3 D15 Task02-3
 
 public class EmpStatistics {
 
