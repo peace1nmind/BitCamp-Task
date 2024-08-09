@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 // W3 D15 Task03-3
 
@@ -52,6 +55,10 @@ public class EmpManager {
 		while (rs.next()) {
 			String result = String.format("%d\t%-12s\t%d", rs.getInt("사번"), rs.getString("이름"), rs.getInt("연봉"));
 			System.out.println(result);
+		}
+		
+		if (rs != null) {
+			rs.close();
 		}
 		
 		if (pstmt != null) {
