@@ -2,9 +2,9 @@ package d240809_Fri_Task.part02;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 // W D 
 
@@ -24,7 +24,7 @@ public class EmpStatistics {
 	public void printSatistics(int maxSalary) throws SQLException {
 		
 		Connection conn = null;
-		Statement stmt = null;
+		Statement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
@@ -43,8 +43,8 @@ public class EmpStatistics {
 					+ "GROUP BY j.job_title "
 					+ "ORDER BY avgSalary DESC" ;
 			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.createStatement();
+			rs = pstmt.executeQuery(sql);
 			
 			System.out.println("==============================");
 			System.out.println("Max Salary : "+maxSalary);
@@ -68,8 +68,8 @@ public class EmpStatistics {
 			
 		} finally {
 			try {
-				if (stmt != null) {
-					stmt.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				
 				if (conn != null) {
