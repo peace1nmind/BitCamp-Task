@@ -1,0 +1,44 @@
+문제 1 ]
+
+CREATE OR REPLACE VIEW dpet_view
+AS
+SELECT
+d.department_name name, 
+MIN(e.salary) minSal, MAX(e.salary) maxSal, AVG(NVL(e.salary, 0)) avgSal
+FROM employees e, departments d
+WHERE e.department_id = d.department_id
+GROUP BY d.department_name, e.department_id
+;
+
+
+문제 2 ]
+
+SELECT
+e.employee_id e_id, e.department_id d_id, 
+e.salary salary,  ed.avg avg_salary
+FROM employees e, 
+(SELECT
+d.department_id, ROUND(AVG(NVL(e.salary,0)), 0) avg
+FROM employees e, departments d
+WHERE e.department_id = d.department_id
+GROUP BY d.department_id) ed
+WHERE e.department_id = ed.department_id
+AND e.salary > ed.avg
+;
+
+
+문제 3 ]
+
+SELECT
+e.employee_id employee_id, ed.department_name department_name, 
+e.salary salary, ed.avg avg_salary
+FROM employees e,
+(SELECT
+d.department_id, d.department_name,ROUND(AVG(NVL(e.salary,0)), 0) avg
+FROM employees e, departments d
+WHERE e.department_id = d.department_id
+GROUP BY d.department_id, d.department_name) ed
+WHERE e.department_id = ed.department_id
+AND e.department_id = ?
+;
+
