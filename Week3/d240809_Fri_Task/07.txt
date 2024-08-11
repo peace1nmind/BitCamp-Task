@@ -78,3 +78,21 @@ ORDER BY c.country_name
 ;
 
 
+문제 3 ]
+
+WITH dept_sal AS (
+	SELECT d.department_id dept_id, 
+	MAX(e.salary) maxSal, ROUND(AVG(NVL(e.salary, 0)), 2) avgSal 
+	FROM employees e, departments d 
+	WHERE e.department_id = d.department_id
+	GROUP BY d.department_id)
+SELECT 
+e.employee_id 직원아이디, e.first_name 이름, 
+e.salary 급여, ds.avgSal 부서평균 
+FROM employees e, dept_sal ds 
+WHERE e.department_id = ds.dept_id 
+AND e.salary = ds.maxSal 
+ORDER BY e.employee_id
+;
+
+
