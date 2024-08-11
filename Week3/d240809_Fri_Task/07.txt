@@ -50,6 +50,7 @@ HAVING COUNT(*) = 1
 ;
 
 
+
 - Page 2
 
 문제 1 ]
@@ -93,6 +94,79 @@ FROM employees e, dept_sal ds
 WHERE e.department_id = ds.dept_id 
 AND e.salary = ds.maxSal 
 ORDER BY e.employee_id
+;
+
+
+문제 4 ]
+
+0)
+
+CREATE TABLE salgrade (
+	grade NUMBER(2) PRIMARY KEY, 
+	losal NUMBER(5) NOT NULL, 
+	hisal NUMBER(5) NOT NULL);
+	
+	
+1)
+
+IF NOT EXIST INSERT INTO salgrade VALUES (1, 1000, 5000);
+INSERT INTO salgrade VALUES (2, 5001, 10000);
+INSERT INTO salgrade VALUES (3, 10001, 20000);
+INSERT INTO salgrade VALUES (4, 20001, 30000);
+
+
+2)
+
+SELECT
+sg.grade||'등급' 급여등급, COUNT(*) 
+FROM employees e, salgrade sg 
+WHERE e.salary BETWEEN sg.losal AND sg.hisal 
+GROUP BY sg.grade
+ORDER BY 급여등급
+;
+
+
+
+- Page 3
+
+문제 1 ]
+
+SELECT
+NVL(TO_CHAR(TRUNC(commission_pct, 1), '9.9'), '<커미션 없음>') 커미션, 
+COUNT(*) 직원수
+FROM employees
+GROUP BY NVL(TO_CHAR(TRUNC(commission_pct, 1), '9.9'), '<커미션 없음>')
+ORDER BY 커미션 DESC
+;
+
+
+문제 2 ]
+
+SELECT * 
+FROM 
+	(SELECT
+	d.department_name 부서명, e.first_name 직원명, 
+	e.salary 급여, e.commission_pct 커미션
+	FROM employees e, departments d 
+	WHERE e.department_id = d.department_id 
+	AND e.commission_pct IS NOT NULL
+	ORDER BY 커미션 DESC)
+WHERE ROWNUM <= 4
+;
+
+
+문제 3 ]
+
+SELECT *
+FROM
+	(SELECT
+	l.city city, d.department_name dept_name, 
+	e.first_name name, e.salary salalry 
+	FROM employees e, departments d, locations l 
+	WHERE e.department_id = d.department_id 
+	AND d.location_id = l.location_id)
+WHERE LOWER(city) LIKE '%south%' 
+AND LOWER(dept_name) LIKE '%it%'
 ;
 
 
