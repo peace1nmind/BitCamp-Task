@@ -1,0 +1,80 @@
+- Page 1
+
+문제 1 ]
+
+SELECT 
+TO_CHAR(hire_date, 'MM') 월, COUNT(*) 
+FROM employees
+GROUP BY TO_CHAR(hire_date, 'MM')
+ORDER BY 월
+;
+
+
+문제 2 ]
+
+SELECT 
+d.department_name department_name, 
+e.first_name first_name, e.salary salary 
+FROM employees e, departments d, 
+(SELECT 
+d.department_id dept_id, MAX(e.salary) maxSal 
+FROM employees e, departments d 
+WHERE e.department_id = d.department_id 
+GROUP BY d.department_id) ed
+WHERE e.department_id = d.department_id
+AND d.department_id = ed.dept_id
+AND e.salary = ed.maxSal
+;
+
+
+WITH dept_info AS (
+	SELECT d.department_name dept_name, 
+	MAX(e.salary) maxSal, MIN(e.salary) minSal, 
+	ROUND(AVG(NVL(e.salary, 0)), 0) avgSal 
+	FROM employees e, departments d 
+	WHERE e.department_id = d.department_id 
+	GROUP BY d.department_name)
+SELECT * FROM dept_info 
+WHERE avgSal BETWEEN 
+(SELECT avgSal FROM dept_info WHERE dept_name = 'IT')+1 
+AND (SELECT avgSal FROM dept_info WHERE dept_name = 'Sales')-1 
+;
+
+
+SELECT
+NVL(d.department_name, '<신생부서>') 부서명, COUNT(*) 직원수 
+FROM employees e, departments d 
+WHERE e.department_id = d.department_id(+) 
+GROUP BY NVL(d.department_name, '<신생부서>') 
+HAVING COUNT(*) = 1
+;
+
+
+- Page 2
+
+문제 1 ]
+
+SELECT 
+d.department_name 부서명, TO_CHAR(e.hire_date, 'MM') 입사월, COUNT(*) 직원수
+FROM employees e, departments d 
+WHERE e.department_id = d.department_id 
+GROUP BY d.department_name, TO_CHAR(e.hire_date, 'MM')
+HAVING COUNT(*) >= 5 
+ORDER BY d.department_name
+;
+
+
+문제 2 ]
+
+SELECT
+NVL(c.country_name, '<부서없음>') 국가명, NVL(l.city, '<부서없음>') 도시명, 
+COUNT(*) 직원수 
+FROM employees e, departments d, locations l, countries c 
+WHERE e.department_id = d.department_id(+) 
+AND d.location_id = l.location_id(+) 
+AND l.country_id = c.country_id(+) 
+GROUP BY c.country_name, l.city 
+ORDER BY c.country_name
+;
+
+

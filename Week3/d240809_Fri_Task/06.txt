@@ -1,0 +1,37 @@
+문제 1 ]
+
+SELECT 
+e.first_name, e.hire_date, e.employee_id, 
+mng.first_name 
+FROM employees e, employees mng 
+WHERE e.manager_id = mng.employee_id(+) 
+AND TO_CHAR(e.hire_date, 'YYYY') BETWEEN 1980 AND 1989
+;
+
+
+문제 2 ]
+
+SELECT 
+e.first_name first_name, e.salary salary, 
+d.department_name department_name 
+FROM employees e, departments d 
+WHERE e.department_id = d.department_id 
+AND d.department_name IN ('Sales') 
+AND e.salary <  
+	(SELECT AVG(NVL(salary, 0)) 
+	FROM employees 
+	WHERE department_id = 100 
+	GROUP BY department_id);
+
+
+문제 3 ]
+
+SELECT 
+e.first_name name, d.department_name 
+FROM employees e, departments d, locations l 
+WHERE e.department_id = d.department_id
+AND d.location_id = l.location_id
+AND l.city IN ('South San Francisco')
+AND e.salary BETWEEN 7000 AND 10000
+;
+

@@ -29,7 +29,6 @@ public class Prob5 {
 		try {
 			Class.forName(driver);
 			
-			// SQL 수정 필요
 			String sql = "SELECT "
 					+ "e.employee_id employee_id, ed.department_name department_name, "
 					+ "e.salary salary, ed.avg avg_salary "
@@ -42,18 +41,23 @@ public class Prob5 {
 					+ "WHERE e.department_id = ed.department_id "
 					+ "AND e.department_id = ?";
 			
-			conn = DriverManager.getConnection(url, "scott", "tiger");
+			conn = DriverManager.getConnection(url, "hr", "hr");
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, Integer.parseInt(dept_id));
-//			pstmt.setString(1, dept_id);
 			
 			rs = pstmt.executeQuery();
 			
-			ResultSetMetaData rsm = null;
+			ResultSetMetaData rsm = rs.getMetaData();
+			for (int i = 1; i <= rsm.getColumnCount(); i++) {
+				String column = rsm.getColumnLabel(i);
+//				String a = (i!=rsm.getColumnCount()) ? rsm.getColumnLabel(i)+"\t" : rsm.getColumnLabel(i);
+				System.out.print(String.format((column.length()<=10)? "%-10s\t" :(column.length()<15)? "%-15s\t" : "%-20s\t", column));
+			}
+			System.out.println();
 			
 			while (rs.next()) {
-				System.out.println(String.format("%d\t%-15s\t%d\t%d",
+				System.out.println(String.format("%-15d\t%-20s\t%-10d\t%-15d",
 						rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4)));
 			}
 			
