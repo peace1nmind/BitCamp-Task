@@ -49,31 +49,40 @@ public class Prob5 {
 			rs = pstmt.executeQuery();
 			
 			ResultSetMetaData rsm = rs.getMetaData();
+			
 			for (int i = 1; i <= rsm.getColumnCount(); i++) {
+				
 				String column = rsm.getColumnLabel(i);
 //				String a = (i!=rsm.getColumnCount()) ? rsm.getColumnLabel(i)+"\t" : rsm.getColumnLabel(i);
 				System.out.print(String.format((column.length()<=10)? "%-10s\t" :(column.length()<15)? "%-15s\t" : "%-20s\t", column));
 			}
+			
 			System.out.println();
 			
 			while (rs.next()) {
+				
 				System.out.println(String.format("%-15d\t%-20s\t%-10d\t%-15d",
 						rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4)));
 			}
 			
+			
 		} catch (ClassNotFoundException ce) {
 			ce.printStackTrace();
+			
 		} catch (SQLException se) {
 			se.printStackTrace();
+			
 		} finally {
 			try {
 				// DB Conn, PreparedStatement Close
 				if (rs!=null) rs.close();
 				if (pstmt != null) pstmt.close();
 				if (conn != null) conn.close();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+				
+			}// try-catch-finally end
 		}
 		
 	}// method end

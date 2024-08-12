@@ -15,9 +15,10 @@ public class EmpManager {
 	static {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
 	}
 
@@ -33,6 +34,7 @@ public class EmpManager {
 		String args = "";
 		
 		for (int i = 0; i < jobs.length; i++) {
+			
 			args = (i!=jobs.length-1) ? args+"'"+jobs[i]+"', " : args+"'"+jobs[i]+"'";
 		}
 		
@@ -49,18 +51,22 @@ public class EmpManager {
 		ResultSet rs = stmt.executeQuery(sql);
 		
 		while (rs.next()) {
+			
 			System.out.println(String.format("%d\t%-15s\t%d", 
 					rs.getInt("e_id"), rs.getString("name"), rs.getInt("salary")));
 		}
 
 		// DB Conn, PreparedStatement Close
-		if (rs!=null) rs.close();
-		if (stmt != null)
-			stmt.close();
-		if (con != null)
-			con.close();
-
+		if (rs!=null) {
+			rs.close();}
 		
+		if (stmt != null) {
+			stmt.close();}
+			
+		if (con != null) {
+			con.close();
+		}
+			
 	}
 	
 	

@@ -16,10 +16,12 @@ public class EmpStatistics {
 	private String user = "hr";
 	private String password = "hr";
 	
+	
 	// Constructor
 	public EmpStatistics() {
 	}
-
+	
+	
 	// Method
 	public void printSatistics(int maxSalary) throws SQLException {
 		
@@ -51,10 +53,12 @@ public class EmpStatistics {
 			System.out.println("==============================");
 			
 			while (rs.next()) {
+				
 				String job_title = rs.getString("job_title");
 				int avgSalary = rs.getInt("avgSalary");
 				
 				System.out.println("["+job_title+"] "+avgSalary);
+				
 			}
 			
 		} catch (ClassNotFoundException e1) {
@@ -82,6 +86,7 @@ public class EmpStatistics {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
+				
 			}
 		}
 		

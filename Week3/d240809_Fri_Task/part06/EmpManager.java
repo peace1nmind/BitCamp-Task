@@ -19,10 +19,12 @@ public class EmpManager {
 		}
 	}
 
+	
 	// Constructor
 	public EmpManager() {
 	}
 
+	
 	// Method
 	public void printEmployee(String city, int lo, int hi) throws SQLException {
 		
@@ -47,6 +49,7 @@ public class EmpManager {
 		ResultSet rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
+			
 			System.out.println(String.format("%-20s\t%s", rs.getString(1), rs.getString(2)));
 		}
 
@@ -61,6 +64,7 @@ public class EmpManager {
 			con.close();}
 
 	}
+	
 	
 	// Main Method
 	public static void main(String[] args) throws SQLException {

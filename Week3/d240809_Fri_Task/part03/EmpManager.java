@@ -50,8 +50,10 @@ public class EmpManager {
 		rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
+			
 			String result = String.format("%d\t%-12s\t%d", rs.getInt("사번"), rs.getString("이름"), rs.getInt("연봉"));
 			System.out.println(result);
+			
 		}
 		
 		if (rs != null) {

@@ -15,6 +15,7 @@ public class Prob5 {
 	public Prob5() {
 	}
 
+	
 	// Method
 	private static void printEmployeeList(String cityName, String deptName) throws Exception {
 		
@@ -44,6 +45,7 @@ public class Prob5 {
 		ResultSet rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
+			
 			System.out.println(String.format("%s\t%s\t%-15s\t%d", 
 					rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
 		}
@@ -59,6 +61,7 @@ public class Prob5 {
 			con.close();}
 
 	}
+	
 	
 	// Main Method
 	public static void main(String[] args) throws Exception {
