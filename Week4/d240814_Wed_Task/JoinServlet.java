@@ -61,10 +61,8 @@ public class JoinServlet extends HttpServlet {
 			out.println(items[i]+" : "+info[i]);
 		}
 		
-		out.println("</body>");
-		out.println("</html>");
-		out.flush();
-		out.close();
+		
+		
 		
 		/* JDBC 부분 */
 		
@@ -88,10 +86,21 @@ public class JoinServlet extends HttpServlet {
 			
 			rs = pstmt.executeUpdate();
 			
+			if (rs == 1) {
+				out.println("<br><br><strong>회원가입에성공하였습니다</strong>");
+			}
+			
+			out.println("</body>");
+			out.println("</html>");
+			out.flush();
+			out.close();
+				
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		} finally {
 			try {
 				if (pstmt != null) {
@@ -99,6 +108,7 @@ public class JoinServlet extends HttpServlet {
 				
 				if (conn != null) {
 					conn.close();}
+				
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
