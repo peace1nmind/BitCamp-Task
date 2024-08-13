@@ -7,6 +7,8 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Week3"/>
+	<classpathentry kind="src" path="Week4"/>
 	<classpathentry kind="lib" path="C:/oraclexe/app/oracle/product/10.2.0/server/jdbc/lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="C:/apache-tomcat-9.0.58/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
