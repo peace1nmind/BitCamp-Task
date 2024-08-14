@@ -18,11 +18,9 @@ public class JoinServlet extends HttpServlet {
 	// Field
 
 	// Constructor
-	public JoinServlet() {
-	}
 
 	// Method
-	public void service(HttpServletRequest req, HttpServletResponse res) 
+	public void doPost(HttpServletRequest req, HttpServletResponse res) 
 			throws ServletException,IOException {
 		
 		/* HTML ºÎºÐ */
@@ -48,9 +46,9 @@ public class JoinServlet extends HttpServlet {
 				req.getParameter("edu"), req.getParameter("job"), req.getParameter("dept"), req.getParameter("marriage"), req.getParameter("child"), 
 				tel, req.getParameter("telPlace"), phone, req.getParameter("telCompany"), req.getParameter("addr")};
 		
-		Member member = new Member(req.getParameter("name"), gender, birth, req.getParameter("calendarType"), 
-				req.getParameter("edu"), req.getParameter("job"), req.getParameter("dept"), marriage, child, 
-				tel, telPlace, phone, req.getParameter("telCompany"), req.getParameter("addr"));
+//		Member member = new Member(req.getParameter("name"), gender, birth, req.getParameter("calendarType"), 
+//				req.getParameter("edu"), req.getParameter("job"), req.getParameter("dept"), marriage, child, 
+//				tel, telPlace, phone, req.getParameter("telCompany"), req.getParameter("addr"));
 		
 		out.println("<html>");
 		out.println("<head>");
@@ -58,7 +56,7 @@ public class JoinServlet extends HttpServlet {
 		out.println("</head>");
 		
 		for (int i = 0; i < items.length; i++) {
-			out.println(items[i]+" : "+info[i]);
+			out.println("<p>"+items[i]+" : "+info[i]+"</p>");
 		}
 		
 		
@@ -94,7 +92,7 @@ public class JoinServlet extends HttpServlet {
 			out.println("</html>");
 			out.flush();
 			out.close();
-				
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			
@@ -114,9 +112,6 @@ public class JoinServlet extends HttpServlet {
 			}
 			
 		}
-		
-		
-		
 		
 	}// method end
 
